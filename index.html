@@ -1,0 +1,182 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101a2c"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>FSA - Freelan Sales</title>
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.png"><link rel="apple-touch-icon" href="icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#101a2c;--ink2:#1c2b45;--paper:#f4f6f4;--card:#fff;--tx:#14262a;--mu:#5d7276;--ln:#dbe3e2;--amb:#fcd34d;--A:#1f9d6b;--B:#2f80c9;--C:#d99a14;--D:#d6453d}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:15px/1.45 Inter,system-ui,sans-serif;color:var(--tx);background:var(--paper);padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3,.g{font-family:Sora,Inter,sans-serif;margin:0}
+header{background:var(--ink);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 16px 14px;position:sticky;top:0;z-index:5}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:180px}.brand img{width:34px;height:34px;border-radius:8px}
+.brand b{font:700 16px Sora}.brand small{display:block;color:#9fc0c4;font-size:12px}
+button,input,select{font:inherit}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--amb);color:#2a1c00;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #ffffff55}.btn.lt{background:#e8eeed;color:var(--tx)}.btn.red{background:#fde8e6;color:var(--D)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--amb);outline-offset:2px}
+main{max-width:1100px;margin:auto;padding:16px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.tools input,.tools select,.f input,.f select{padding:10px 12px;border:1px solid var(--ln);border-radius:10px;background:#fff;min-width:0}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:16px}
+.sum div{background:var(--card);border-radius:12px;padding:10px 12px;border-left:6px solid var(--ln)}
+.sum b{font:700 22px Sora;display:block}.sum span{color:var(--mu);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border-radius:16px;display:flex;overflow:hidden;box-shadow:0 1px 2px #0f2f3514;cursor:pointer;border:1px solid var(--ln)}
+.card.ro{cursor:default}
+.gr{width:84px;flex:none;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gr .g{font-size:44px;font-weight:700;line-height:1}.gr small{font-size:12px;opacity:.9}
+.cb{padding:12px 14px;flex:1;min-width:0}
+.cb h3{font-size:16px}.cb p{margin:2px 0 8px;color:var(--mu);font-size:13px}
+.tot{height:8px;background:#e8eeed;border-radius:6px;overflow:hidden;margin-bottom:10px}.tot i{display:block;height:100%}
+.ms{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ms div{background:var(--paper);border-radius:8px;padding:5px 7px;font-size:12px;color:var(--mu)}
+.ms b{display:block;color:var(--tx);font-size:13px}.neg{color:var(--D)!important}
+.tabs{max-width:1100px;margin:10px auto 0;display:flex;gap:6px;overflow-x:auto}.tabs button{background:#ffffff14;color:#cfd8e6;border:0;border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}.tabs .on{background:var(--amb);color:#2a1c00;font-weight:600}
+.row{background:#fff;border:1px solid var(--ln);border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:center;margin-bottom:10px}.row div{flex:1;min-width:0}.row small{color:var(--mu);display:block}
+.gs{display:grid;grid-template-columns:64px 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}.gs label,.sc label{display:grid;gap:4px;font-size:13px;color:var(--mu)}
+.sc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}.gs input,.sc input{padding:10px;border:1px solid var(--ln);border-radius:10px;width:100%}
+.empty{text-align:center;color:var(--mu);padding:40px 10px;background:#fff;border-radius:16px}
+dialog{border:0;border-radius:18px;padding:0;width:min(560px,94vw);max-height:92vh}
+dialog::backdrop{background:#0f2f3999}
+.dh{background:var(--ink);color:#fff;padding:14px 18px}.db{padding:16px 18px;overflow:auto;max-height:68vh}
+.f{display:grid;gap:10px}.f label{display:grid;gap:4px;font-size:13px;color:var(--mu)}
+.mr{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;align-items:end}
+.df{display:flex;gap:8px;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--ln);flex-wrap:wrap}
+.live{font:700 18px Sora}
+.login{max-width:400px;margin:8vh auto;padding:0 16px}
+.login .box{background:#fff;border-radius:20px;padding:24px;display:grid;gap:12px;border:1px solid var(--ln)}
+.login h1{font-size:24px}.note{font-size:13px;color:var(--mu)}.err{color:var(--D);font-size:13px}
+@media(max-width:480px){.gr{width:68px}.gr .g{font-size:36px}}
+@media(prefers-reduced-motion:no-preference){.card{transition:transform .12s}.card:active{transform:scale(.98)}}
+</style></head><body>
+<div id="app"></div><dialog id="dlg"></dialog>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+// Firebase project: fsal-3a340. Clear apiKey to go back to demo mode.
+const CFG={apiKey:"AIzaSyCsApT-kSGA48BwE4fbUVgA1UnmYdtfgNM",authDomain:"fsal-3a340.firebaseapp.com",projectId:"fsal-3a340",storageBucket:"fsal-3a340.firebasestorage.app",messagingSenderId:"741323485718",appId:"1:741323485718:web:363bb63328ee2593707b37"};
+const MET=[["rtn","RTN & Drag %"],["ps","TPS %"],["rd","T RD %"],["sr","Avg Sales Return %"],["bg","BG %"],["pf","Profitability Avg %"]];
+const PAL=["#1f9d6b","#2f80c9","#d99a14","#d6453d","#8a5cc7","#6b7b80"];
+const DEF={max:{rtn:10,ps:10,rd:10,sr:10,bg:10,pf:10},grades:[{g:"A",min:54,label:"Excellent"},{g:"B",min:40,label:"Good"},{g:"C",min:30,label:"Fair"},{g:"D",min:0,label:"Needs work"}]};
+let SCH=DEF;const mx=k=>+SCH.max[k]||0,TOP_=()=>MET.reduce((a,[k])=>a+mx(k),0),GL=()=>[...SCH.grades].sort((a,b)=>b.min-a.min);
+const grade=t=>{const L=GL(),x=L.find(x=>t>=x.min)||L[L.length-1];return[x.g,x.min,x.label,PAL[SCH.grades.indexOf(x)%PAL.length]]};
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mkey=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+
+/* ---------- data layer: Firebase or local demo ---------- */
+function fbLayer(){
+  firebase.initializeApp(CFG);const au=firebase.auth(),db=firebase.firestore();let cb,busy=false;
+  const prof=async u=>{const s=await db.doc("users/"+u.uid).get();return{uid:u.uid,email:u.email,...(s.exists?s.data():{name:u.email,role:"asm"})}};
+  return{demo:false,
+    onAuth(f){cb=f;au.onAuthStateChanged(async u=>{if(busy)return;f(u?await prof(u):null)})},
+    login:(e,p)=>au.signInWithEmailAndPassword(e,p),
+    async signup(e,p,name){busy=true;try{const r=await au.createUserWithEmailAndPassword(e,p);await db.doc("users/"+r.user.uid).set({name,role:"asm",email:e});busy=false;cb(await prof(r.user))}catch(x){busy=false;throw x}},
+    logout:()=>au.signOut(),
+    sub:(c,f)=>db.collection(c).onSnapshot(s=>f(s.docs.map(d=>({id:d.id,...d.data()}))),e=>console.warn(c,e.message)),
+    put:(c,id,o)=>db.collection(c).doc(id).set(o),del:(c,id)=>db.collection(c).doc(id).delete()}
+}
+function demoLayer(){
+  const L=JSON.parse(localStorage.fl||"null")||(()=>{const m=mkey(new Date()),r=(a,b)=>({pct:a,mk:b});
+    const S=(id,x)=>{const mk=x.map(v=>v[1]),t=mk.reduce((a,b)=>a+b,0);return[m+"_"+id,{agency:id,month:m,m:Object.fromEntries(MET.map((k,i)=>[k[0],r(...x[i])])),total:t,grade:grade(t)[0]}]};
+    return{agencies:{CG0039:{code:"CG0039",area:"Hatton Agent",asm:"Mr. Shalitha"},CG0552:{code:"CG0552",area:"Thalawakele New Agent",asm:"Mr. Shalitha"},CG0510:{code:"CG0510",area:"Welimada Agent",asm:"Mr. Shalitha"}},
+    scores:Object.fromEntries([S("CG0039",[[0,10],[103,10],[95,10],[1,4],[59,10],[-2,4]]),S("CG0552",[[0,10],[100,10],[98,10],[1,4],[61,10],[-3,0]]),S("CG0510",[[97,0],[104,10],[105,10],[0,10],[53,10],[-1,4]])]),users:{}}})();
+  L.asms=L.asms||{shalitha:{name:"Mr. Shalitha",email:"shalitha@demo"}};L.settings=L.settings||{};const subs=[];let cb;const save=()=>{localStorage.fl=JSON.stringify(L);subs.forEach(s=>s())};
+  return{demo:true,onAuth(f){cb=f;f(JSON.parse(sessionStorage.fu||"null"))},
+    async login(role){const u=role=="finance"?{uid:"f",name:"Finance Manager",role:"finance"}:{uid:"a",name:"Mr. Shalitha",email:"shalitha@demo",role:"asm"};sessionStorage.fu=JSON.stringify(u);cb(u)},
+    logout(){sessionStorage.removeItem("fu");cb(null)},
+    sub(c,f){const run=()=>f(Object.entries(L[c]).map(([id,v])=>({id,...v})));subs.push(run);run()},
+    async put(c,id,o){L[c][id]=o;save()},async del(c,id){delete L[c][id];save()}}
+}
+const D=CFG.apiKey?fbLayer():demoLayer();
+
+/* ---------- state & views ---------- */
+let U=null,AG=[],SC=[],ASMS=[],DR=null,msg="",tab="scores",month=mkey(new Date()),q="",subbed=false,deferred;
+const myName=()=>ASMS.find(a=>a.email&&a.email.toLowerCase()==(U.email||"").toLowerCase())?.name||U.name;
+const app=$("#app"),dlg=$("#dlg");
+D.onAuth(u=>{U=u;if(u&&!subbed){subbed=true;D.sub("agencies",a=>{AG=a;draw()});D.sub("scores",s=>{SC=s;draw()});D.sub("asms",x=>{ASMS=x;draw()});D.sub("settings",x=>{const z=x.find(i=>i.id=="scheme");SCH=z?{max:{...DEF.max,...z.max},grades:z.grades}:DEF;draw()})}draw()});
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;draw()});
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js");
+
+function draw(){if(!U)return loginView();
+  const fin=U.role=="finance";if(!fin)tab="scores";
+  const v={scores:scoresV,agencies:agenciesV,asms:asmsV,scheme:schemeV}[tab]();
+  app.innerHTML=`<header><div class="bar"><div class="brand"><img src="icon.png" alt=""><div><b>FSA · Freelan Sales</b><small>${esc(U.name)} · ${fin?"Finance Manager":"Area Sales Manager"}</small></div></div>
+  ${deferred?'<button class="btn" id="inst">Install app</button>':""}<button class="btn ghost" id="out">Sign out</button></div>
+  ${fin?`<div class="tabs">${[["scores","Scores"],["agencies","Agents"],["asms","ASMs"],["scheme","Grading"]].map(t=>`<button data-t="${t[0]}" class="${tab==t[0]?"on":""}">${t[1]}</button>`).join("")}</div>`:""}</header><main>${v.h}</main>`;
+  $("#out").onclick=()=>D.logout();$("#inst")&&($("#inst").onclick=()=>{deferred.prompt();deferred=null;draw()});
+  app.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{tab=b.dataset.t;DR=null;msg="";draw()});v.b&&v.b()}
+
+function scoresV(){const fin=U.role=="finance",me=myName().trim().toLowerCase();
+  const list=AG.filter(a=>fin||a.asm?.trim().toLowerCase()==me).filter(a=>(a.code+a.area+a.asm).toLowerCase().includes(q.toLowerCase())).sort((a,b)=>a.asm.localeCompare(b.asm)||a.code.localeCompare(b.code));
+  const sc=a=>SC.find(s=>s.id==month+"_"+a.id),cnt={};GL().forEach(g=>cnt[g.g]=0);list.forEach(a=>{const s=sc(a);if(s)cnt[grade(s.total)[0]]++});
+  return{h:`<div class="tools"><input type="month" id="mo" value="${month}" aria-label="Month"><input type="search" id="q" placeholder="Search agent or ASM" value="${esc(q)}" style="flex:1;min-width:150px"></div>
+  <div class="sum">${GL().map(g=>`<div style="border-color:${grade(g.min)[3]}"><b>${cnt[g.g]}</b><span>Grade ${esc(g.g)} · ${esc(g.label)}</span></div>`).join("")}</div>
+  <div class="grid">${list.map(a=>card(a,sc(a),fin)).join("")||`<div class="empty" style="grid-column:1/-1">${fin?"No agents yet. Open the Agents tab to add one.":"No agents are assigned to you yet. Ask the Finance Manager to assign you."}</div>`}</div>`,
+  b(){$("#mo").onchange=e=>{month=e.target.value||month;draw()};
+  $("#q").oninput=e=>{q=e.target.value;draw();const i=$("#q");i.focus();i.setSelectionRange(q.length,q.length)};
+  app.querySelectorAll("[data-id]").forEach(c=>c.onclick=()=>fin&&scoreForm(AG.find(a=>a.id==c.dataset.id)))}}}
+
+function agenciesV(){const L=[...AG].sort((a,b)=>a.code.localeCompare(b.code));
+  return{h:`<div class="tools"><h2 style="flex:1">Agents</h2><button class="btn" id="add">Add agent</button></div>${L.map(a=>`<div class="row"><div><b>${esc(a.area)}</b><small>${esc(a.code)} · ASM: ${esc(a.asm||"Unassigned")}</small></div><button class="btn lt" data-e="${esc(a.id)}">Edit</button></div>`).join("")||'<div class="empty">No agents yet. Tap Add agent.</div>'}`,
+  b(){$("#add").onclick=()=>agencyForm();app.querySelectorAll("[data-e]").forEach(x=>x.onclick=()=>agencyForm(AG.find(a=>a.id==x.dataset.e)))}}}
+
+function asmsV(){return{h:`<div class="tools"><h2 style="flex:1">Area Sales Managers</h2><button class="btn" id="add">Add ASM</button></div>${ASMS.map(m=>`<div class="row"><div><b>${esc(m.name)}</b><small>${esc(m.email||"No email")} · ${AG.filter(a=>a.asm==m.name).length} agents</small></div><button class="btn lt" data-e="${esc(m.id)}">Edit</button></div>`).join("")||'<div class="empty">No ASMs yet. Add an ASM, then assign agents to them.</div>'}<p class="note">An ASM signs up with the same email you enter here and then sees only their own agents.</p>`,
+  b(){$("#add").onclick=()=>asmForm();app.querySelectorAll("[data-e]").forEach(x=>x.onclick=()=>asmForm(ASMS.find(m=>m.id==x.dataset.e)))}}}
+
+function asmForm(m){dlg.innerHTML=`<div class="dh"><h2>${m?"Edit":"Add"} ASM</h2></div><div class="db"><div class="f"><label>Name<input id="n" value="${esc(m?.name)}"></label><label>Email (used to sign in)<input id="e" type="email" value="${esc(m?.email)}"></label></div></div>
+  <div class="df">${m?'<button class="btn red" id="rm">Delete</button>':"<span></span>"}<span><button class="btn lt" id="x">Cancel</button> <button class="btn" id="sv">Save</button></span></div>`;dlg.showModal();
+  $("#x").onclick=()=>dlg.close();
+  $("#sv").onclick=async()=>{const n=$("#n").value.trim(),e=$("#e").value.trim();if(!n)return;
+    if(m&&m.name!=n)for(const a of AG.filter(a=>a.asm==m.name))await D.put("agencies",a.id,{code:a.code,area:a.area,asm:n});
+    await D.put("asms",m?.id||("a"+Date.now()),{name:n,email:e});dlg.close()};
+  m&&($("#rm").onclick=async()=>{if(AG.some(a=>a.asm==m.name))return alert("Reassign this ASM's agents first, then delete.");if(confirm("Delete this ASM?")){await D.del("asms",m.id);dlg.close()}})}
+
+function readDraft(){if(!$("#sch"))return;DR={max:{},grades:[]};app.querySelectorAll("[data-m]").forEach(i=>DR.max[i.dataset.m]=+i.value||0);
+  app.querySelectorAll(".gs").forEach(r=>{const v=f=>r.querySelector(`[data-f=${f}]`).value;DR.grades.push({g:v("g").trim(),min:+v("min")||0,label:v("label").trim()})})}
+function schemeV(){readDraft();DR=DR||JSON.parse(JSON.stringify(SCH));
+  return{h:`<div id="sch"><div class="tools"><h2 style="flex:1">Points and grades</h2></div>${msg?`<p class="note" style="color:var(--A)">${msg}</p>`:""}
+  <h3 style="margin:6px 0 10px">Maximum marks per column</h3><div class="sc">${MET.map(([k,n])=>`<label>${n}<input type="number" min="0" data-m="${k}" value="${DR.max[k]??10}"></label>`).join("")}</div>
+  <h3 style="margin:6px 0 10px">Grades (minimum total marks)</h3>${DR.grades.map((g,i)=>`<div class="gs"><label>Grade<input data-f="g" value="${esc(g.g)}"></label><label>Min marks<input type="number" data-f="min" value="${g.min}"></label><label>Label<input data-f="label" value="${esc(g.label)}"></label><button class="btn red" data-r="${i}" aria-label="Remove grade">✕</button></div>`).join("")}
+  <div class="tools"><button class="btn lt" id="ag">Add grade</button><button class="btn lt" id="rs">Reset to default</button><button class="btn" id="sv">Save scheme</button></div><p class="note">Total possible: <b id="tp"></b> marks. The lowest grade always starts at 0. Changes apply to every month, including past ones.</p></div>`,
+  b(){const tp=()=>{readDraft();$("#tp").textContent=MET.reduce((a,[k])=>a+(DR.max[k]||0),0)};tp();app.querySelectorAll("#sch input").forEach(i=>i.oninput=tp);
+  $("#ag").onclick=()=>{readDraft();DR.grades.push({g:"",min:0,label:""});draw()};
+  $("#rs").onclick=()=>{DR=JSON.parse(JSON.stringify(DEF));draw()};
+  app.querySelectorAll("[data-r]").forEach(x=>x.onclick=()=>{readDraft();DR.grades.splice(+x.dataset.r,1);draw()});
+  $("#sv").onclick=async()=>{readDraft();const gr=DR.grades.filter(g=>g.g).sort((a,b)=>b.min-a.min);if(!gr.length)return alert("Add at least one grade.");gr[gr.length-1].min=0;
+    await D.put("settings","scheme",{max:DR.max,grades:gr});DR=null;msg="Scheme saved.";draw()}}}}
+
+function card(a,s,fin){const g=s?grade(s.total):null,col=g?g[3]:"#9aaaad";
+  return`<div class="card ${fin?"":"ro"}" data-id="${esc(a.id)}"><div class="gr" style="background:${col}"><span class="g">${g?g[0]:"–"}</span><small>${s?s.total+"/"+TOP_():"No score"}</small></div>
+  <div class="cb"><h3>${esc(a.area)}</h3><p>${esc(a.code)} · ${esc(a.asm)}</p>
+  ${s?`<div class="tot"><i style="width:${s.total/TOP_()*100}%;background:${col}"></i></div><div class="ms">${MET.map(([k,n])=>{const m=s.m[k]||{pct:0,mk:0};return`<div>${n.replace(" %","").replace(" Avg","")}<b class="${m.pct<0?"neg":""}">${m.pct}% · ${m.mk}</b></div>`}).join("")}</div>`:`<p>${fin?"Tap to enter marks for this month.":"Marks not entered for this month yet."}</p>`}</div></div>`}
+
+function loginView(){let mode="in";
+  const v=()=>{app.innerHTML=`<div class="login"><div class="box"><img src="icon.png" alt="" width="64" height="64" style="border-radius:14px"><h1>FSA</h1><span class="note">Freelan Sales · Freelan Enterprises (Pvt) Ltd</span>
+  ${D.demo?`<p class="note">Demo mode: Firebase is not connected yet. Pick a role to preview.</p><button class="btn" id="d1">Enter as Finance Manager</button><button class="btn lt" id="d2">Enter as ASM (Mr. Shalitha)</button>`:
+  `<div class="f">${mode=="up"?'<label>Your name<input id="nm"></label>':""}<label>Email<input id="em" type="email" autocomplete="username"></label><label>Password<input id="pw" type="password" autocomplete="current-password"></label></div><div class="err" id="er"></div>
+  <button class="btn" id="go">${mode=="in"?"Sign in":"Create ASM account"}</button><button class="btn lt" id="sw">${mode=="in"?"New ASM? Create account":"Back to sign in"}</button>`}</div></div>`;
+  if(D.demo){$("#d1").onclick=()=>D.login("finance");$("#d2").onclick=()=>D.login("asm");return}
+  $("#sw").onclick=()=>{mode=mode=="in"?"up":"in";v()};
+  $("#go").onclick=async()=>{try{mode=="in"?await D.login($("#em").value,$("#pw").value):await D.signup($("#em").value,$("#pw").value,$("#nm").value.trim()||$("#em").value)}catch(e){$("#er").textContent=e.message.replace("Firebase: ","")}}};v()}
+
+function agencyForm(a){const names=[...new Set([...ASMS.map(x=>x.name),a?.asm])].filter(Boolean);
+  dlg.innerHTML=`<div class="dh"><h2>${a?"Edit":"Add"} agent</h2></div><div class="db"><div class="f"><label>Agent code<input id="c" value="${esc(a?.code)}" ${a?"disabled":""} placeholder="CG0039"></label><label>Area / agent name<input id="ar" value="${esc(a?.area)}"></label><label>ASM<select id="as">${names.map(x=>`<option ${x==a?.asm?"selected":""}>${esc(x)}</option>`).join("")||"<option value=''>Add an ASM first</option>"}</select></label></div></div>
+  <div class="df">${a?'<button class="btn red" id="rm">Delete</button>':"<span></span>"}<span><button class="btn lt" id="x">Cancel</button> <button class="btn" id="sv">Save</button></span></div>`;dlg.showModal();
+  $("#x").onclick=()=>dlg.close();
+  $("#sv").onclick=async()=>{const code=$("#c").value.trim().toUpperCase(),ar=$("#ar").value.trim(),as=$("#as").value.trim();if(!code||!ar||!as)return;await D.put("agencies",a?.id||code,{code,area:ar,asm:as});dlg.close()};
+  a&&($("#rm").onclick=async()=>{if(confirm("Delete this agent?")){await D.del("agencies",a.id);dlg.close()}})}
+
+function scoreForm(a){const s=SC.find(x=>x.id==month+"_"+a.id),m=s?.m||{};
+  dlg.innerHTML=`<div class="dh"><h2>${esc(a.area)}</h2><small>${esc(a.code)} · ${esc(a.asm)} · ${month}</small></div><div class="db"><div class="f">
+  ${MET.map(([k,n])=>`<div class="mr"><b>${n}</b><label>Value %<input type="number" step="any" inputmode="decimal" data-p="${k}" value="${m[k]?.pct??""}"></label><label>Marks (0–${mx(k)})<input type="number" min="0" max="${mx(k)}" step="any" inputmode="decimal" data-k="${k}" value="${m[k]?.mk??""}"></label></div>`).join("")}</div></div>
+  <div class="df"><span class="live" id="lv"></span><span><button class="btn lt" id="ed">Edit agent</button> <button class="btn lt" id="x">Cancel</button> <button class="btn" id="sv">Save marks</button></span></div>`;dlg.showModal();
+  const calc=()=>{let t=0;dlg.querySelectorAll("[data-k]").forEach(i=>t+=Math.min(mx(i.dataset.k),Math.max(0,+i.value||0)));const g=grade(t);$("#lv").innerHTML=`${t}/${TOP_()} · <span style="color:${g[3]}">Grade ${g[0]}</span>`;return t};
+  dlg.querySelectorAll("input").forEach(i=>i.oninput=calc);calc();
+  $("#x").onclick=()=>dlg.close();$("#ed").onclick=()=>agencyForm(a);
+  $("#sv").onclick=async()=>{const t=calc(),mm={};MET.forEach(([k])=>{mm[k]={pct:+dlg.querySelector(`[data-p=${k}]`).value||0,mk:Math.min(mx(k),Math.max(0,+dlg.querySelector(`[data-k=${k}]`).value||0))}});
+    await D.put("scores",month+"_"+a.id,{agency:a.id,month,m:mm,total:t,grade:grade(t)[0]});dlg.close()}}
+</script></body></html>
